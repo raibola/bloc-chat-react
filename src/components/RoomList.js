@@ -21,16 +21,16 @@ class RoomList extends Component {
 
     render(){
             return(
-                <table>
+                <table align="center">
                     <tbody>
-                          {this.state.rooms.map( (rooms, index) =>
-                         <tr key={index}>
+                          {this.state.rooms.map( (rooms ) =>
+                         <tr key={rooms.key}>
                           <td>{rooms.name}</td>
                          </tr>
                         )}
                     </tbody>
                 </table>
-            )
+            );
     }
 
     }

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import RoomList from './components/RoomList';
 import * as firebase from 'firebase';
+import RoomList from './components/RoomList';
 
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyCU6FvrVVIqxV6SzRg2n13k3EAXHqIr684",
-  authDomain: "bloc-chat-raibola.firebaseapp.com",
-  databaseURL: "https://bloc-chat-raibola.firebaseio.com",
-  projectId: "bloc-chat-raibola",
-  storageBucket: "bloc-chat-raibola.appspot.com",
-  messagingSenderId: "1078191580706"
+  apiKey: "AIzaSyANquYmgtreJ3mWTN_3C_NUFRWoiL0djO8",
+  authDomain: "bloc-chat-342a5.firebaseapp.com",
+  databaseURL: "https://bloc-chat-342a5.firebaseio.com",
+  projectId: "bloc-chat-342a5",
+  storageBucket: "bloc-chat-342a5.appspot.com",
+  messagingSenderId: "165100288262"
 };
 firebase.initializeApp(config);
 
@@ -18,8 +18,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <RoomList firebase={firebase}
-        />
+      <h1>Welcome to Bloc Chat!</h1>
+        <RoomList firebase={firebase} />
       </div>
     );
   }
