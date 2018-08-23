@@ -14,12 +14,17 @@ var config = {
 };
 firebase.initializeApp(config);
 
+
 class App extends Component {
   render() {
     return (
       <div className="App">
       <h1>Welcome to Bloc Chat!</h1>
+<<<<<<< HEAD
       <h2>Chat Room List</h2>
+=======
+      <h3>Chat Room List</h3>
+>>>>>>> checkpoint-blocchatreact-listrooms
         <RoomList firebase={firebase} />
       </div>
     );
