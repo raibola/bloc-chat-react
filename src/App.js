@@ -20,6 +20,7 @@ class App extends Component {
     return (
       <div className="App">
       <h1>Welcome to Bloc Chat!</h1>
+      <h3>Chat Room List</h3>
         <RoomList firebase={firebase} />
       </div>
     );
