@@ -37,22 +37,26 @@ class RoomList extends Component {
     render(){
             return(
             <div className="room-list">
-                <table align="center">
-                    <tbody>
-                          {this.state.rooms.map( (rooms ) =>
+                  <h2>Chat Room List</h2>
+                <table className="chatroom-table" align="center">
+                    <tbody className="list">
+                          {this.state.rooms.map( (rooms) =>
                          <tr key={rooms.key}>
-                          <td>{rooms.name}</td>
+                          <td onClick={() => this.props.highlightedRoom(rooms)}>{rooms.name}</td>
                          </tr>
                         )}
                     </tbody>
                 </table>
                 <form onSubmit = { (e) => {this.createRoom(e)} }>
-                    Add new room: <input 
+                    <input
                         type="text"
                         value={this.state.newRoomName}
                         onChange={ (e) => {this.handleChange(e)} }
                     />
-                    <input type="submit" /> 
+                    <input 
+                    type="submit" 
+                    value="make new room"
+                    /> 
                 </form>
             </div>    
             );
