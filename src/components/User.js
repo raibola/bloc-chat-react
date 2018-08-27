@@ -25,11 +25,15 @@ render() {
     return(
         <div>
             {isLoggedIn ? 
-                (<h3>Hello, guest!</h3>,
-                <button onClick={() => this.signIn()}>Sign In</button>) :
-                (<h3>Hello, {this.props.activeUser.displayName}!</h3>,
-                <button onClick={() => this.signOut()}>Sign Out</button>)
-                }
+            (<span className="true">
+                <h3>Hello, guest!</h3>
+                <button onClick={() => this.signIn()}>Sign In</button>
+            </span>)     :
+            (<span className="false">
+            <h3>Hello, {this.props.activeUser.displayName}!</h3>
+            <button onClick={() => this.signOut()}>Sign Out</button>
+            </span>)
+            }
         </div>
     );
 }
