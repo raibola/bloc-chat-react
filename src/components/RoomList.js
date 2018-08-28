@@ -37,7 +37,8 @@ class RoomList extends Component {
     render(){
             return(
             <div className="room-list">
-                  <h2>Chat Room List</h2>
+                  <h1>Bloc Chat</h1>
+                  <h3>Chat Room List</h3>
                 <table className="chatroom-table" align="center">
                     <tbody className="list">
                           {this.state.rooms.map( (rooms) =>

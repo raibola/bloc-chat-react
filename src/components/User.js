@@ -23,18 +23,16 @@ render() {
     console.log(this.props.activeUser);
 
     return(
-        <div>
+        <header className="isLoggedIn">
             {isLoggedIn ? 
             (<span className="true">
-                <h3>Hello, guest!</h3>
-                <button onClick={() => this.signIn()}>Sign In</button>
+            <h3>Hello, guest!  <button onClick={() => this.signIn()}>Sign In</button></h3>
             </span>)     :
             (<span className="false">
-            <h3>Hello, {this.props.activeUser.displayName}!</h3>
-            <button onClick={() => this.signOut()}>Sign Out</button>
+            <h3>Hello, {this.props.activeUser.displayName}!  <button onClick={() => this.signOut()}>Sign Out</button></h3>
             </span>)
             }
-        </div>
+        </header>
     );
 }
 }

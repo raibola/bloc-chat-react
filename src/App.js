@@ -39,7 +39,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <h1>Welcome to Bloc Chat!</h1>
         <User 
         firebase={firebase}
         activeUser={this.state.activeUser}
@@ -51,11 +50,11 @@ class App extends Component {
         firebase={firebase}
         highlightedRoom={(e) => this.highlightedRoom(e)}
         />
-
         <MessageList
         activeRoom={this.state.activeRoom}
         firebase={firebase}
         highlightedRoom={(e) => this.highlightedRoom(e)}
+        activeUser={this.state.activeUser}
         />
       </div>
     );
