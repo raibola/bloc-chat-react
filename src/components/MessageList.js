@@ -16,7 +16,14 @@ class MessageList extends Component {
             const message = snapshot.val();
             message.key = snapshot.key;
             this.setState({ messages: this.state.messages.concat( message ) });
-        })
+        });
+        this.MessagesRef.on('child_removed', snapshot => {
+            const message = snapshot.val();
+            message.key = message.key;
+            this.setState({ messages: this.state.messages.filter( function(value) {
+              return value.key !== message.key;
+            }) })
+          });
     }
 
     createNewMessage(e) {
@@ -61,6 +68,15 @@ class MessageList extends Component {
         return (month+'/'+date+'/'+year + ' ' + hours + ':' + minutes + ampm);
     }
 
+    deleteMessage(messageKey) {
+        // console.log('trying to delete message', messageKey);
+    const message = this.props.firebase.database().ref('messages' + messageKey);
+    message.remove()
+    const remainMessages = this.state.messages
+      .filter(message => message.key !== messageKey);
+      this.setState({ messages: remainMessages});
+    }
+
 render (){
     const roomMessages = this.state.messages.filter( message => message.roomId === this.props.activeRoom.key)
     return (
@@ -69,10 +85,10 @@ render (){
         <tbody>
          {roomMessages.map( (message) =>  
          <tr key={message.key}>
-         <td>Chat Room {message.roomId}</td>
          <td>{message.username}:</td>
          <td>{message.content}</td>
          <td>{this.timeStampConverter(message.sentAt)}</td>
+         <td><button onClick={ () => this.deleteMessage(message.key) }>Delete Message</button></td>
          </tr>
          )}
         </tbody>

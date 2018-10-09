@@ -82,6 +82,10 @@ section {
 
 .message-list {
   width:100%;
-  padding: 15%;
+  padding: 18%;
   float: center;
+}
+
+.rooms:hover {
+  background: whitesmoke;
 }

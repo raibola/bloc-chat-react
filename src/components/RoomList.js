@@ -18,6 +18,13 @@ class RoomList extends Component {
             room.key = snapshot.key;
             this.setState({ rooms: this.state.rooms.concat( room ) });
         });
+        this.roomsRef.on('child_removed', snapshot => {
+            const room = snapshot.val();
+            room.key = snapshot.key;
+            this.setState({ rooms: this.state.rooms.filter( function(value) {
+              return value.key !== room.key;
+            }) })
+          });
     }
 
     createRoom(e) {
@@ -34,6 +41,17 @@ class RoomList extends Component {
         this.setState({ newRoomName: e.target.value })
       }
 
+      deleteRoom(roomKey) {
+        // console.log('trying to delete room with room.key:',roomKey);
+        const room = this.props.firebase.database().ref('rooms/' + roomKey);
+        room.remove()
+        const remainRoom= this.state.rooms
+          .filter(room => room.key !== roomKey);
+   
+          this.setState({ rooms: remainRoom });
+      }
+   
+
     render(){
             return(
             <div className="room-list">
@@ -42,8 +60,9 @@ class RoomList extends Component {
                 <table className="chatroom-table" align="center">
                     <tbody className="list">
                           {this.state.rooms.map( (rooms) =>
-                         <tr key={rooms.key}>
+                         <tr className="rooms" key={rooms.key}>
                           <td onClick={() => this.props.highlightedRoom(rooms)}>{rooms.name}</td>
+                          <td><button onClick={() => this.deleteRoom(rooms.key)}>x</button></td>
                          </tr>
                         )}
                     </tbody>
